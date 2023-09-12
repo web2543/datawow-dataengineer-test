@@ -30,7 +30,7 @@ def data_dict(path:list):
     dfz=pd.Series(department_map).to_frame().reset_index()
     dfz.rename({"index":"department_name",0:'department_id'},axis=1,inplace=True)
     dfz[['department_id','department_name']].to_sql('departments',engine,if_exists='append',index=False,method='multi')
-    return product_map,department_map
+    return {'product':product_map,'department':department_map}
 
 @task(task_id="ETL")
 def ETL_pipeline(product_map,department_map,path):
@@ -58,8 +58,13 @@ with DAG(
     start_date=dt.datetime(2023,9,12),
 ):
     path=glob.glob(DATA_PATH)
-    etl=ETL_pipeline(data_dict(path))
+    map_dict=data_dict(path)
+    spilt=[path[i:i + 10] for i in range(0, len(path), 10)]
+    spilt_dags=[]
+    for i in spilt:
+        etl=ETL_pipeline(map_dict['product'],map_dict['department'],i)
+        spilt_dags.append(etl)
 
-etl
+map_dict>>spilt_dags
 
 
