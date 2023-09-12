@@ -16,8 +16,8 @@
     docker compose build
     docker compose -f .\docker-compose.airflow.yaml -f .\docker-compose.yaml up -d --build
     ```
-5. Connect to Postgres with your favor cilent and execute all of SQL statement in table.sql (user:postgres password:123456789)
-6. Airflow UI running at localhost:8080 (user: admin password:airflow)
+5. Connect to Postgres with your favor cilent and execute all of SQL statement in table.sql (**user**:postgres **password**:123456789)
+6. Airflow UI running at localhost:8080 (**user**: admin **password**:airflow)
 7. Login Airflow UI 
 8. Go to DAGs and turn on ETL dags
 
