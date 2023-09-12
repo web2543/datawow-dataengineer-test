@@ -20,6 +20,7 @@
 6. Airflow UI running at localhost:8080 (**user**: admin **password**:airflow)
 7. Login Airflow UI 
 8. Go to DAGs and turn on ETL dags
+9. Run DAGs
 
 
 
