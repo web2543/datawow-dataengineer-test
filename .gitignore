@@ -1,0 +1,13 @@
+/config
+/data_sample
+/logs
+/warehouse
+/plugins
+*.ipynb
+sampledata_new.py
+spark-job.py
+ER.drawio
+requirements.txt
+test.py
+.env
+dags/__pycache__
